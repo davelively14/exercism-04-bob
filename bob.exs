@@ -1,8 +1,10 @@
 defmodule Bob do
   def hey(input) do
     cond do
-        true -> raise "Your implementation goes here"
-
+      input |> String.codepoints |> List.last == '?' -> "Sure."
+      input =~ ~r/^[^\p{Ll}]*$/ -> "Whoa, chill out!"
+      input |> String.lstrip == "" -> "Fine, be that way"
+      true -> "Whatever."
     end
   end
 end
